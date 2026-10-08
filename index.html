@@ -310,11 +310,15 @@
         border-radius: 12px;
       }
       .portfolio-list {
-        display: flex;
+        display: grid;
+        grid-auto-columns: 100%;
+        grid-auto-flow: column;
+        width: 100%;
         transition: transform 320ms ease;
       }
       .portfolio-card {
-        flex: 0 0 100%;
+        width: 100%;
+        box-sizing: border-box;
         background: var(--surface);
         border: 1px solid var(--line);
         border-radius: 12px;
@@ -809,8 +813,7 @@
 
         function show(index) {
           current = (index + slides.length) % slides.length;
-          track.style.transform =
-            "translateX(-" + current * (100 / slides.length) + "%)";
+          track.style.transform = "translateX(-" + current * 100 + "%)";
           slides.forEach(function (slide, i) {
             slide.setAttribute("aria-hidden", String(i !== current));
             slide.inert = i !== current;
